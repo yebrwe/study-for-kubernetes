@@ -84,3 +84,55 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 source <(kubeadm completion bash)
 echo "source <(kubeadm completion bash)" >> ~/.bashrc
 ```
+
+## POD ~= dokcer container?
+
+## 쿠버네티스 POD 생성 - nginx
+
+```bash
+kubectl run webserver --image:nginx:1.14 --port 80
+```
+
+## 쿠버네티스 앱 배포(POD 생성이랑 유사)
+
+```bash
+kubectl create deployment --image:httpd --replicas=3
+```
+
+## 콘솔에서 웹페이지 보는 프로그램
+
+```bash
+apt-get update
+apt-get install -y elinks
+elinks [ip address]
+```
+
+## POD 내부 접속
+
+```bash
+kubectl exec webserver -it -- /bin/bash
+```
+
+## POD 수정[vi mode]
+
+```bash
+kubectl edit deployment.apps mainui
+```
+
+## POD yaml 생성
+
+```bash
+kubectl run webserver --image=nginx:1.14 --port 80 --dry-run -o yaml
+```
+
+## POD yaml 실행
+
+```bash
+kubectl create -f webserver-pod.yaml
+```
+
+## POD 삭제
+
+```bash
+kubectl delete pod webserver
+```
