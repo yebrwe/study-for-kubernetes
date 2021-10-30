@@ -122,7 +122,7 @@ kubectl edit deployment.apps mainui
 ## POD yaml 생성
 
 ```bash
-kubectl run webserver --image=nginx:1.14 --port 80 --dry-run -o yaml
+kubectl run webserver --image=nginx:1.14 --port 80 --dry-run -o yaml > webserver-pod.yaml
 ```
 
 ## POD yaml 실행
@@ -135,4 +135,58 @@ kubectl create -f webserver-pod.yaml
 
 ```bash
 kubectl delete pod webserver
+```
+
+# 네임스페이스 확인
+
+```bash
+kubectl get namespaces
+```
+
+# 네임스페이스 생성
+
+```bash
+kubectl create namespace blue
+```
+
+# 네임스페이스 yaml 생성
+
+```bash
+kubectl create namespace blue --dry-run -o yaml > blue-ns.yaml
+```
+
+# 특정 네임스페이스의 POD 조회
+
+```bash
+kubectl get pods --namespace kube-system
+```
+
+# 쿠버네티스 설정 확인
+
+```bash
+kubectl config view
+```
+
+# 쿠버네티스 컨텍스트 등록
+
+```bash
+kubectl config set-context blue@kubernetes --cluster=kubernetes --user=kubernetes-admin --namespace=blue
+```
+
+# 쿠버네티스 현재 컨텍스트 확인
+
+```bash
+kubectl config current-context
+```
+
+# 쿠버네티스 컨텍스트 변경
+
+```bash
+kubectl config use-context blue@kubernetes
+```
+
+# 쿠버네티스 API 버전 확인
+
+```bash
+kubectl explain pod
 ```
