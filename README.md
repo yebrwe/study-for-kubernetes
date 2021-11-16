@@ -71,6 +71,9 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 #token 저장
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 kubectl get nodes
+
+#root 일경우
+export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
 ## 쿠버네티스 자동완성
